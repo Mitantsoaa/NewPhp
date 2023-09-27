@@ -1,6 +1,6 @@
 
 
-    <form action="./index.php" method="POST">
+    <form action="./index.php" method="POST" enctype="multipart/form-data">
         <input type="text" name="nom" placeholder="entrer votre nom">
         <input type="text" name="telephone" placeholder="entrer votre phone">
         <input type="text" name="cin" placeholder="entrer votre cin">
@@ -11,6 +11,8 @@
         Poara:<input type="checkbox" name="fruits[]" value="Poara">
         Voasary:<input type="checkbox" name="fruits[]" value="Voasary">
         Akondro:<input type="checkbox" name="fruits[]" value="Akondro">
+        <label>Votre fichier</label> :
+        <input type="file" name="mon_fichier"><br>
         <input type="submit" value="Save">
     </form>
 
@@ -40,6 +42,21 @@
                 }
                 echo $voa;
             } ?></td>
+        </tr>
+        <tr>
+            <td>Sary:</td>
+            <td><?php 
+            if(isset($_FILES['mon_fichier'])){
+            if ( $_FILES['mon_fichier']['error']) {
+                    echo 'Pas de fichier';
+                
+                }else{
+                    $nom = $_FILES['mon_fichier']['tmp_name'];
+                    $nomdestination = '/image';
+                    move_uploaded_file($nom, $nomdestination);
+                }
+                }
+            ?></td>
         </tr>
     </table>
 
