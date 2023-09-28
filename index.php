@@ -51,9 +51,12 @@
                     echo 'Pas de fichier';
                 
                 }else{
+                    define ('SITE_ROOT', realpath(dirname(__FILE__)));
                     $nom = $_FILES['mon_fichier']['tmp_name'];
                     $nomdestination = '/image';
-                    move_uploaded_file($nom, $nomdestination);
+                    move_uploaded_file($nom, SITE_ROOT.$nomdestination.'/'.$_FILES['mon_fichier']['name']);?>
+                    <img src="<?php echo str_replace('/','',$nomdestination).'/'.$_FILES['mon_fichier']['name']; ?>" alt="image">
+                    <?php
                 }
                 }
             ?></td>
