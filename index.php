@@ -1,6 +1,7 @@
 
 
     <form action="./index.php" method="POST" enctype="multipart/form-data">
+        <input type="date" name="date" placeholder="la date">
         <input type="text" name="nom" placeholder="entrer votre nom">
         <input type="text" name="telephone" placeholder="entrer votre phone">
         <input type="text" name="cin" placeholder="entrer votre cin">
@@ -17,6 +18,10 @@
     </form>
 
     <table>
+        <tr>
+            <td>Date:</td>
+            <td><?php if(isset($_POST['date'])){echo $_POST['date'];} ?></td>
+        </tr>
         <tr>
             <td>Nom:</td>
             <td><?php if(isset($_POST['nom'])){echo $_POST['nom'];} ?></td>
