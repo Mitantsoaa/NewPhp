@@ -3,7 +3,7 @@
     <form action="./index.php" method="POST" enctype="multipart/form-data">
         <input type="date" name="date" placeholder="la date">
         <input type="text" name="nom" required pattern = "^[A-Za-z '-]+$" maxlength="20" minlength="3" placeholder="entrer votre nom">
-        <input type="text" name="telephone" maxlength="10"  placeholder="entrer votre phone">
+        <input type="phone" name="telephone" maxlength="10"  placeholder="entrer votre phone">
         <input type="text" name="cin" maxlength="12" minlength="12" placeholder="entrer votre cin">
         Homme:<input type="radio" name="gender" value="H">
         Femme:<input type="radio" name="gender" value="F">
@@ -24,11 +24,11 @@
         </tr>
         <tr>
             <td>Nom:</td>
-            <td><?php if(isset($_POST['nom'])){echo $_POST['nom'];} ?></td>
+            <td><?php if(isset($_POST['nom']) && preg_match('/[\^<,\"@\/\{\}\(\)\*\$%\?=>:\|;#]+/i',$_POST['nom'])){echo $_POST['nom'];} ?></td>
         </tr>
         <tr>
             <td>Telephone:</td>
-            <td><?php  if(isset($_POST['telephone'])){echo $_POST['telephone'];} ?></td>
+            <td><?php  if(isset($_POST['telephone']) && preg_match('/^[0-9]{10}+$/',$_POST['telephone'])){echo $_POST['telephone'];} ?></td>
         </tr>
         <tr>
             <td>Cin:</td>
