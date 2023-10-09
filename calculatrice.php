@@ -5,7 +5,7 @@ function isOp($op): bool
     return preg_match('/[+-*%^/]/',$op);
 }
 
- function calculatrice(float $num1,string $op, ?float $num2 = 0)
+ function calculatrice(float $num1,string $op, ?float $num2 = 0) :float
  {
     if(isOp($op)){
         return "opérateur invalide";
