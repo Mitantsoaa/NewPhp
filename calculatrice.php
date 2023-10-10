@@ -2,7 +2,7 @@
 declare(strict_types=1);
 function isOp($op): bool
 {
-    return preg_match('/[+-*%^/]/',$op);
+    return preg_match('/[+\-*/%]/',$op);
 }
 
  function calculatrice(float $num1,string $op, ?float $num2 = 0) :float
