@@ -2,12 +2,12 @@
 declare(strict_types=1);
 function isOp($op): bool
 {
-    return preg_match('/[+-*%^/]/',$op);
+    return strlen($op) === 1 && preg_match('/[-+\/\*%]/',$op);
 }
 
  function calculatrice(float $num1,string $op, ?float $num2 = 0) :float
  {
-    if(isOp($op)){
+    if(!isOp($op)){
         return "opérateur invalide";
     }
     if(is_numeric($num1) && is_numeric($num2)){
@@ -22,8 +22,10 @@ function isOp($op): bool
                 return $num1 * $num2;
             case "%":
                 return $num1 % $num2;
+            default:
+                return "vous devez entrer des nombres pour les opérations";
         }
     }
  }
 
- echo calculatrice(2,"*");
+ echo calculatrice(9,"a",2);
