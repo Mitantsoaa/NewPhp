@@ -9,6 +9,23 @@ declare(strict_types=1);
         return $result;
     }
 
+    function deleteData($connexion,$id){
+        $sql =  "DELETE FROM php WHERE id =".$id;
+        $query = mysqli_query($connexion,$sql);
+        header('Location: /listing.php');
+    }
+
+    function updateData($connexion, $name,$lastName,$age,$phone,$adresse,$id){
+        $sql = sprintf("UPDATE php SET nom = %s, prenom = %s, age = %d, telephone = %s, adresse = %s WHERE id = %d",$name,$lastName,$age,$adresse,$id);
+        mysqli_query($connexion,$sql);
+        header('Location: /listing.php');
+    }
+
+    function getAllData($connexion){
+        $sql = "SELECT * FROM php";
+        $result = mysqli_query($connexion,$sql);
+        return $result;
+    }
     function isNom(String $nom)
     {
         if(strlen($nom) <= 1){

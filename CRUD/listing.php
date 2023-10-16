@@ -1,7 +1,7 @@
 <?php
-include('connexion.php');
-$sql = "SELECT * FROM php";
-$result = mysqli_query($connexion,$sql);
+include 'connexion.php';
+include 'fonctions.php';
+$result = getAllData($connexion);
 
 ?>
 <table>
@@ -23,6 +23,7 @@ $result = mysqli_query($connexion,$sql);
      <td><?php echo $ligne['telephone'] ;?></td>
      <td><?php echo $ligne['adresse'] ;?></td>
      <td><a href="/update.php?id=<?php echo $ligne['id'];?>">Update</a></td>
+     <td><a href="/delete.php?id=<?php echo $ligne['id'];?>">Delete</a></td>
     </tr>
     <?php
 }
