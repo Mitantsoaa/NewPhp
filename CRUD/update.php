@@ -17,4 +17,11 @@ $res = getDataById($connexion,$_GET['id']);
     <input type="submit" name="send" value="Update">
 </form>
 <?php
-    
+    if(isset($_POST) && isset($_POST['send'])){
+        $name = $_POST['nom'];
+        $lastName = $_POST['prenom'];
+        $age = $_POST['age'];
+        $phone = $_POST['phone'];
+        $adresse = $_POST['adresse'];
+        updateData($connexion,$name,$lastName,$age,$phone,$adresse,$_GET['id']);
+    }
