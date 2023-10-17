@@ -74,5 +74,9 @@ declare(strict_types=1);
 
     function isAdress(?String $adress)
     {
-        return preg_match('/^(?:\\d+ [a-zA-Z ]+, ){2}[a-zA-Z ]+$/', $adress);
+       if(!preg_match('/^(?:\\d+ [a-zA-Z ]+, ){2}[a-zA-Z ]+$/', $adress)){
+            die("Votre adresse n'est pas valide");
+       }else{
+            return $adress;
+       }
     }

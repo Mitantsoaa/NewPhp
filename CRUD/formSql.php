@@ -12,14 +12,15 @@
     <input type="submit" name="send" value="Save">
 </form>
 <?php 
-include('connexion.php');
+include 'connexion.php';
+include 'fonctions.php';
 if($_POST){
-    $nom = $_POST['nom']?$_POST['nom']:'';
-    $prenom = $_POST['prenom']?$_POST['prenom']:null;
-    $age = $_POST['age']?$_POST['age']:0;
-    $phone = $_POST['phone']?$_POST['phone']:null;
-    $adresse = $_POST['adresse']?$_POST['adresse']:null;
-    if(isset($_POST['send']) && isset($nom)){
+    $nom = $_POST['nom']?isNom($_POST['nom']):'';
+    $prenom = $_POST['prenom']?isPrenom($_POST['prenom']):null;
+    $age = $_POST['age']?isAge($_POST['age']):0;
+    $phone = $_POST['phone']?isPhone($_POST['phone']):null;
+    $adresse = $_POST['adresse']?isAdress($_POST['adresse']):null;
+    if(isset($_POST['send'])){
         // $sql = "INSERT INTO php (nom, prenom, age, telephone, adresse) VALUES ('$nom', '$prenom','$age', '$phone', '$adresse')";
         $sql = sprintf('INSERT INTO php (nom, prenom, age, telephone, adresse) VALUES ("%s", "%s","%d", "%s", "%s")',$nom, $prenom, $age, $phone, $adresse);
         mysqli_query($connexion,$sql);
