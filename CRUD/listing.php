@@ -12,6 +12,7 @@ $result = getAllData($connexion);
         <th>Téléphone</th>
         <th>Adresse</th>
         <th>Actions</th>
+        <th><a href="/formSql.php">Add</a></th>
     </tr>
     <?php
     while($ligne = mysqli_fetch_assoc($result)){
