@@ -16,8 +16,9 @@ declare(strict_types=1);
     }
 
     function updateData($connexion, $name,$lastName,$age,$phone,$adresse,$id){
-        $sql = sprintf("UPDATE php SET nom = %s, prenom = %s, age = %d, telephone = %s, adresse = %s WHERE id = %d",$name,$lastName,$age,$adresse,$id);
+        $sql = "UPDATE php SET nom = '$name', prenom = '$lastName', age = '$age', telephone = '$phone', adresse = '$adresse' WHERE id = '$id'";
         mysqli_query($connexion,$sql);
+        
         header('Location: /listing.php');
     }
 
