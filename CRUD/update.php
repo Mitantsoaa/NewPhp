@@ -3,7 +3,7 @@ include 'connexion.php';
 include 'fonctions.php';
 $res = getDataById($connexion,$_GET['id']);
 ?>
-<form action="./update.php" method="POST">
+<form action="" method="POST">
     <label for="nom">Nom:</label>
     <input type="text" name="nom" placeholder="Entrez votre nom" value="<?php if(isset($res['nom'])){echo $res['nom']; }?>">
     <label for="prenom">Prénom:</label>
