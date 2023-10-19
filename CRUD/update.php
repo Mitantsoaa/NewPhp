@@ -18,10 +18,10 @@ $res = getDataById($connexion,$_GET['id']);
 </form>
 <?php
     if(isset($_POST) && isset($_POST['send'])){
-        $name = $_POST['nom'];
-        $lastName = $_POST['prenom'];
-        $age = $_POST['age'];
-        $phone = $_POST['phone'];
-        $adresse = $_POST['adresse'];
+        $name = estNom($_POST['nom']);
+        $lastName = estPrenom($_POST['prenom']);
+        $age = estAge($_POST['age']);
+        $phone = estPhone($_POST['phone']);
+        $adresse = estAdress($_POST['adresse']);
         updateData($connexion,$name,$lastName,$age,$phone,$adresse,$_GET['id']);
     }
