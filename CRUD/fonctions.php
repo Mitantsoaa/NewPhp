@@ -27,56 +27,57 @@ declare(strict_types=1);
         $result = mysqli_query($connexion,$sql);
         return $result;
     }
-    function isNom(String $nom)
+    function estNom(String $nom)
     {
+        // je sais pas pourquoi celui ne marche plus /^[a-zA-ZÀ-ÿ.-]*[a-zA-ZÀ-ÿ][\s\t]+[a-zA-ZÀ-ÿ.-]*$/
         if(strlen($nom) <= 1){
             die('Nom trop court');
-        }else if (!preg_match ("/^[a-zA-ZÀ-ÿ.-]*[a-zA-ZÀ-ÿ][\s\t]+[a-zA-ZÀ-ÿ.-]*$/", $nom)){
-            die('Le nom doit être une chaine de caractère');
-        }else{
+        }else if (preg_match("/^[a-zA-z-é.ôêèë çù]*$/", $nom)){
             return $nom;
+        }else{
+            die('Le nom doit être une chaine de caractère');
         }
     }
 
-    function isPrenom(?String $prenom)
+    function estPrenom(?String $prenom)
     {
         if(strlen($prenom) <= 1){
             die ('Prénom trop court');
-        }else if (!preg_match ("/^[a-zA-ZÀ-ÿ.-]*[a-zA-ZÀ-ÿ][\s\t]+[a-zA-ZÀ-ÿ.-]*$/", $prenom)){
+        }else if (!preg_match ("/^[a-zA-z-é.ôêèë çù]*$/", $prenom)){
             die('Le prénom doit être une chaine de caractère');
         }else{
             return $prenom;
         }
     }
 
-    function isAge(?Int $age)
+    function estAge(?Int $age)
     {
         if(!is_numeric($age)){
             die('Votre age doit être un nombre');
-        }else if (ceil(log10($age)) >= 4){
+        }else if ($age >= 120){
             die('Vous êtes trop vieux');
         }else{
             return $age;
         }
     }
 
-    function isPhone(?String $phone)
+    function estPhone(?String $phone)
     {
         if(strlen($phone) < 10){
             die('Numero de téléphone trop court');
-        }else if (strlen($phone) > 10){
+        }else if (strlen($phone) > 12){
             die('Numero de téléphone trop long');
-        }else if(!preg_match('/^[0-9]{10}+$/', $phone)){
+        }else if(!preg_match('/^[0-9]{12}+$/', $phone)){
             die('Format de numero invalide');
         }else{
             return $phone;
         }
     }
 
-    function isAdress(?String $adress)
+    function estAdress(?String $adress)
     {
-       if(!preg_match('/^(?:\\d+ [a-zA-Z ]+, ){2}[a-zA-Z ]+$/', $adress)){
-            die("Votre adresse n'est pas valide");
+       if(!preg_match('/Lot lot/', $adress)){
+            die("Votre adresse doit contenir le mot clé 'Lot' ");
        }else{
             return $adress;
        }

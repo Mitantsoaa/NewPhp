@@ -15,11 +15,11 @@
 include 'connexion.php';
 include 'fonctions.php';
 if($_POST){
-    $nom = $_POST['nom']?isNom($_POST['nom']):'';
-    $prenom = $_POST['prenom']?isPrenom($_POST['prenom']):null;
-    $age = $_POST['age']?isAge($_POST['age']):0;
-    $phone = $_POST['phone']?isPhone($_POST['phone']):null;
-    $adresse = $_POST['adresse']?isAdress($_POST['adresse']):null;
+    $nom = estNom($_POST['nom']);
+    $prenom = estPrenom($_POST['prenom']);
+    $age = estAge($_POST['age']);
+    $phone = estPhone($_POST['phone']);
+    $adresse = estAdress($_POST['adresse']);
     if(isset($_POST['send'])){
         // $sql = "INSERT INTO php (nom, prenom, age, telephone, adresse) VALUES ('$nom', '$prenom','$age', '$phone', '$adresse')";
         $sql = sprintf('INSERT INTO php (nom, prenom, age, telephone, adresse) VALUES ("%s", "%s","%d", "%s", "%s")',$nom, $prenom, $age, $phone, $adresse);
